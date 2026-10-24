@@ -1,18 +1,82 @@
-# Reto 02: Gestión y Análisis Inteligente de Contratos y Buzón
+# Reto 02: Agente Inteligente de Registro y Gestión de Contratos
 
-Solución automatizada basada en Inteligencia Artificial y Procesamiento de Lenguaje Natural (PLN) para la ingesta, extracción de entidades y conciliación de contratos, adendas y comunicaciones comerciales de un buzón corporativo.
+**Empresa:** Periferia IT Group  
+**Desarrollador:** Flabio Rodríguez Correa  
+**Estado:** Completado y listo para producción  
 
-## 📋 Descripción General
-El sistema procesa de forma autónoma los mensajes y documentos adjuntos provenientes del buzón (`msg-001` a `msg-006`), extrayendo cláusulas críticas, montos y vigencias, y contrastándolos contra los registros maestros de la organización (`maestro-contratos.csv` y `comerciales.json`) para garantizar la integridad contractual y mitigar riesgos legales y financieros.
+---
 
-## ⚙️ Arquitectura de la Solución
-1. **Ingesta de Datos:** Normalización de correos electrónicos (`correo.json`) y documentos legales (`contrato.txt`, `otrosi.txt`, `cotizacion.txt`).
-2. **Extracción Estructurada (IA):** Uso de modelos de lenguaje con esquemas estrictos para la identificación de entidades clave (Fechas, Montos, Partes, Modificaciones).
-3. **Motor de Conciliación:** Cruce automatizado con bases de datos maestras para la detección de discrepancias e inconsistencias.
+## 📋 Descripción del Proyecto
+Este proyecto implementa un asistente conversacional inteligente basado en agentes y herramientas tipadas en TypeScript/Zod. Su propósito es automatizar el ciclo operativo de contratos en el buzón corporativo de Periferia IT Group, abarcando desde la lectura de correos y adjuntos hasta la extracción de metadatos, validación contra el maestro corporativo, registro formal y generación de alertas tempranas de vencimiento.
+
+---
+
+## 🛠️ Stack Tecnológico
+* **Lenguaje:** TypeScript 5.3 (módulos tipo `bundler`)
+* **Runtime:** Node.js v24+
+* **Validación de Esquemas:** Zod 3.22
+* **Backend:** Express.js
+* **Interfaz Gráfica:** HTML5 + Tailwind CSS (vía CDN)
+* **Infraestructura de Despliegue:** Hostinger Business (Node.js App)
+
+---
+
+## 📂 Estructura del Proyecto
+
+```text
+reto-02-gestion-contratos-ia/
+├── agent/
+│   └── prompt.md            # System prompt y directivas del agente
+├── data/
+│   └── fixtures/
+│       └── buzon/           # Mensajes reales de prueba (msg-001 al msg-006)
+├── src/
+│   ├── llm/
+│   │   └── adapter.ts       # Adaptador seguro para el modelo LLM
+│   ├── tools/
+│   │   └── contratos.ts     # 5 Herramientas tipadas con Zod
+│   └── server.ts            # Servidor backend en Express y endpoints API
+├── web/
+│   └── index.html           # Interfaz web interactiva del chat
+├── out/                     # Directorio de salidas (alertas y SharePoint simulado)
+├── demo.ts                  # Script de verificación determinista sin LLM
+├── SOLUCION.md              # Documento técnico detallado y Regla de Gobierno
+├── tsconfig.json            # Configuración del compilador TypeScript
+└── package.json             # Dependencias y scripts de ejecución
+
+---
 
 ## 🚀 Instalación y Ejecución
 
-1. Clonar el repositorio:
+1. Clonar el repositorio e instalar dependencias
    ```bash
    git clone [https://github.com/FLABIORC/reto-02-gestion-contratos-ia.git](https://github.com/FLABIORC/reto-02-gestion-contratos-ia.git)
    cd reto-02-gestion-contratos-ia
+
+Abre tu terminal en la carpeta del proyecto y ejecuta:
+npm.cmd install
+
+2. Ejecutar la Demo Determinista (Sin LLM)
+Para validar la lógica de negocio completa de punta a punta procesando los mensajes de prueba (msg-001 a msg-006):
+npm.cmd run demo
+
+3. Iniciar el Servidor de Desarrollo y la Interfaz Web
+Para levantar el servidor backend y probar el chat interactivo en tiempo real:
+npm.cmd run dev
+
+Una vez iniciado, abre tu navegador web e ingresa a:
+
+👉 http://localhost:3000
+
+🔍 Herramientas del Agente (Zod)
+contratos_leer_buzon: Analiza el buzón e identifica correos pendientes y adjuntos.
+contratos_extraer: Extrae campos estructurados y puntaje de confianza.
+contratos_validar: Clasifica el contrato frente al maestro corporativo.
+contratos_registrar: Almacena el documento en la ruta simulada de SharePoint (out/sharepoint/).
+contratos_alertas: Consolida reportes de vencimientos en out/alertas.md.
+
+📦 Despliegue en Hostinger Business
+Sube los cambios al repositorio de GitHub.
+En el hPanel de Hostinger, configura una nueva aplicación Node.js (versión 20.x o superior).
+Configura las variables de entorno (PORT, OPENAI_API_KEY, OPENAI_MODEL).
+Establece el comando de inicio en npm start.
