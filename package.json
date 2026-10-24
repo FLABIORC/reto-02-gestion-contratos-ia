@@ -4,7 +4,7 @@
   "description": "Agente conversacional para registro y validación de contratos vigentes - Periferia IT",
   "main": "src/server.ts",
   "scripts": {
-    "start": "tsx src/server.ts",
+    "start": "node server.js",
     "dev": "tsx watch src/server.ts",
     "demo": "tsx demo.ts"
   },
