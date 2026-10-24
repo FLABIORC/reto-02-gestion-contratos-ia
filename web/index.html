@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestión de Contratos IA - Periferia IT</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body class="bg-slate-900 text-slate-100 h-screen flex flex-col">
+
+  <!-- Header -->
+  <header class="bg-slate-800 border-b border-slate-700 px-6 py-4 flex justify-between items-center shadow-md">
+    <div class="flex items-center space-x-3">
+      <div class="bg-blue-600 text-white font-bold p-2 rounded-lg text-sm">PIT</div>
+      <div>
+        <h1 class="text-lg font-semibold tracking-wide">Periferia IT Group</h1>
+        <p class="text-xs text-slate-400">Agente Inteligente de Validación y Registro de Contratos</p>
+      </div>
+    </div>
+    <div id="status-badge" class="bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-xs px-3 py-1 rounded-full flex items-center gap-2">
+      <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Sistema Operativo
+    </div>
+  </header>
+
+  <!-- Chat Container -->
+  <main id="chat-container" class="flex-1 overflow-y-auto p-6 space-y-4 max-w-4xl w-full mx-auto">
+    <!-- Mensaje de bienvenida del Agente -->
+    <div class="flex items-start space-x-3">
+      <div class="bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold text-sm shrink-0">IA</div>
+      <div class="bg-slate-800 border border-slate-700 p-4 rounded-2xl max-w-2xl text-sm leading-relaxed shadow-sm">
+        ¡Hola! Soy tu asistente administrativo para la gestión de contratos. Puedo ayudarte a leer el buzón, extraer metadatos, validar contra el maestro y generar alertas de vencimiento. ¿Qué te gustaría hacer hoy? Escribe algo como <em>"Revisar buzón"</em> o <em>"Generar alertas"</em>.
+      </div>
+    </div>
+  </main>
+
+  <!-- Input Area -->
+  <footer class="bg-slate-800 border-t border-slate-700 p-4 shadow-lg">
+    <form id="chat-form" class="max-w-4xl mx-auto flex gap-3">
+      <input 
+        type="text" 
+        id="user-input" 
+        placeholder="Escribe una instrucción para el agente (ej. Revisar buzón de contratos)..." 
+        class="flex-1 bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-blue-500 transition-colors"
+        autocomplete="off"
+        required
+      >
+      <button 
+        type="submit" 
+        class="bg-blue-600 hover:bg-blue-700 text-white font-medium px-6 py-3 rounded-xl text-sm transition-colors flex items-center gap-2 shadow-md cursor-pointer"
+      >
+        Enviar
+      </button>
+    </form>
+  </footer>
+
+  <!-- Script de interacción -->
+  <script>
+    const chatContainer = document.getElementById('chat-container');
+    const chatForm = document.getElementById('chat-form');
+    const userInput = document.getElementById('user-input');
+    const sessionId = 'session-' + Math.random().toString(36).substring(2, 9);
+
+    chatForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const text = userInput.value.trim();
+      if (!text) return;
+
+      // Añadir mensaje del usuario
+      appendMessage(text, 'user');
+      userInput.value = '';
+      chatContainer.scrollTop = chatContainer.scrollHeight;
+
+      // Indicador de escribiendo
+      const loadingId = appendLoading();
+
+      try {
+        const response = await fetch('/api/chat', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ sessionId, message: text })
+        });
+        const data = await response.json();
+        
+        removeLoading(loadingId);
+
+        if (data.ok) {
+          appendMessage(data.reply, 'assistant');
+        } else {
+          appendMessage('Error: ' + (data.error || 'No se pudo procesar la solicitud.'), 'assistant');
+        }
+      } catch (err) {
+        removeLoading(loadingId);
+        appendMessage('Error de conexión con el servidor backend.', 'assistant');
+      }
+      chatContainer.scrollTop = chatContainer.scrollHeight;
+    });
+
+    function appendMessage(text, sender) {
+      const isUser = sender === 'user';
+      const wrapper = document.createElement('div');
+      wrapper.className = `flex items-start space-x-3 ${isUser ? 'flex-row-reverse space-x-reverse' : ''}`;
+      
+      wrapper.innerHTML = `
+        <div class="${isUser ? 'bg-emerald-600' : 'bg-blue-600'} text-white rounded-full w-8 h-8 flex items-center justify-center font-bold text-sm shrink-0">
+          ${isUser ? 'U' : 'IA'}
+        </div>
+        <div class="${isUser ? 'bg-blue-600/20 border-blue-500/30' : 'bg-slate-800 border-slate-700'} border p-4 rounded-2xl max-w-2xl text-sm leading-relaxed shadow-sm">
+          ${escapeHtml(text)}
+        </div>
+      `;
+      chatContainer.appendChild(wrapper);
+    }
+
+    function appendLoading() {
+      const id = 'loading-' + Date.now();
+      const wrapper = document.createElement('div');
+      wrapper.id = id;
+      wrapper.className = 'flex items-start space-x-3';
+      wrapper.innerHTML = `
+        <div class="bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold text-sm shrink-0">IA</div>
+        <div class="bg-slate-800 border border-slate-700 p-4 rounded-2xl text-sm text-slate-400 flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-blue-400 animate-bounce"></span>
+          <span class="w-2 h-2 rounded-full bg-blue-400 animate-bounce [animation-delay:0.2s]"></span>
+          <span class="w-2 h-2 rounded-full bg-blue-400 animate-bounce [animation-delay:0.4s]"></span>
+          Analizando solicitud...
+        </div>
+      `;
+      chatContainer.appendChild(wrapper);
+      chatContainer.scrollTop = chatContainer.scrollHeight;
+      return id;
+    }
+
+    function removeLoading(id) {
+      const el = document.getElementById(id);
+      if (el) el.remove();
+    }
+
+    function escapeHtml(unsafe) {
+      return unsafe
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+  </script>
+</body>
+</html>

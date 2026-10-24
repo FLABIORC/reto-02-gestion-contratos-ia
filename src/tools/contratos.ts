@@ -2,7 +2,6 @@ import { z } from "zod";
 import * as fs from "fs";
 import * as path from "path";
 
-// Contexto base para las herramientas
 export interface ToolContext {
   directory: string;
   sessionId: string;
@@ -14,9 +13,9 @@ export const leer_buzon = {
   args: z.object({}),
   async execute(_args: {}, ctx: ToolContext) {
     try {
-      const buzonPath = path.join(ctx.directory, "fixtures", "reto-02", "buzon");
+      const buzonPath = path.join(ctx.directory, "data", "fixtures", "buzon");
       if (!fs.existsSync(buzonPath)) {
-        return JSON.stringify({ ok: false, error: "No se encontró la carpeta del buzón en fixtures." });
+        return JSON.stringify({ ok: false, error: "No se encontró la carpeta del buzón en data/fixtures/buzon." });
       }
 
       const mensajes = [];
@@ -61,7 +60,7 @@ export const extraer = {
   }),
   async execute(args: { mensaje_id: string }, ctx: ToolContext) {
     try {
-      const msgPath = path.join(ctx.directory, "fixtures", "reto-02", "buzon", args.mensaje_id);
+      const msgPath = path.join(ctx.directory, "data", "fixtures", "buzon", args.mensaje_id);
       if (!fs.existsSync(msgPath)) {
         return JSON.stringify({ ok: false, error: `Mensaje ${args.mensaje_id} no encontrado.` });
       }
@@ -72,7 +71,6 @@ export const extraer = {
         contenidoTexto += fs.readFileSync(path.join(msgPath, file), "utf-8") + "\n";
       }
 
-      // Extracción simulada robusta basada en texto de fixtures
       return JSON.stringify({
         ok: true,
         data: {
