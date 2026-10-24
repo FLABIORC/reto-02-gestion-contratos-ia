@@ -1,56 +1,175 @@
 [
     {
         "mensaje_id": "msg-001",
-        "remitente": "Desconocido",
+        "remitente": "lgomez@periferia-ficticia.com",
         "asunto": "Contrato firmado - Industrias Delta - Implementación CRM",
-        "documentos_adjuntos": [
-            "contrato.txt"
+        "documentos": {
+            "contrato.txt": {
+                "extracto": "CONTRATO DE PRESTACIÓN DE SERVICIOS No. CT-2026-015\n\nEntre los suscritos, INDUSTRIAS DELTA S.A.S., identificada con NIT 890.900.111-4, con domicilio en Bogotá D.C., representada legalmente por Mauricio Salgado Ríos, quien en adelante se denominará EL CONTRATANTE, y PERIFERIA IT GROUP S.A.S., identif...",
+                "entidades": {
+                    "montos_detectados": [
+                        "$265.000.000"
+                    ],
+                    "codigos_contrato_detectados": [
+                        "CT-2026-015"
+                    ]
+                }
+            }
+        },
+        "codigos_contrato_detectados": [
+            "CT-2026-015"
         ],
-        "estado_analisis": "Procesado correctamente"
+        "cruce_maestro": "Sin coincidencia en maestro",
+        "estado_conciliacion": "Discrepancia: Código CT-2026-015 no registrado en el maestro"
     },
     {
         "mensaje_id": "msg-002",
-        "remitente": "Desconocido",
+        "remitente": "cruiz@periferia-ficticia.com",
         "asunto": "Contrato Corporación Andina - Fábrica de software 2026-2027",
-        "documentos_adjuntos": [
-            "contrato.txt"
+        "documentos": {
+            "contrato.txt": {
+                "extracto": "CONTRATO DE PRESTACIÓN DE SERVICIOS No. CT-2026-016\n\nEntre los suscritos, CORPORACIÓN ANDINA DE SERVICIOS S.A., identificada con RUC 1790012345001, con domicilio en Quito, Ecuador, representada legalmente por Verónica Paredes Loor, quien en adelante se denominará EL CONTRATANTE, y PERIFERIA IT GROUP...",
+                "entidades": {
+                    "montos_detectados": [
+                        "USD 120,000.00"
+                    ],
+                    "codigos_contrato_detectados": [
+                        "CT-2026-016"
+                    ]
+                }
+            }
+        },
+        "codigos_contrato_detectados": [
+            "CT-2026-016"
         ],
-        "estado_analisis": "Procesado correctamente"
+        "cruce_maestro": "Sin coincidencia en maestro",
+        "estado_conciliacion": "Discrepancia: Código CT-2026-016 no registrado en el maestro"
     },
     {
         "mensaje_id": "msg-003",
-        "remitente": "Desconocido",
+        "remitente": "cruiz@periferia-ficticia.com",
         "asunto": "Otrosí No. 1 contrato CT-2026-011 Minera Los Andes",
-        "documentos_adjuntos": [
-            "otrosi.txt"
+        "documentos": {
+            "otrosi.txt": {
+                "extracto": "OTROSÍ No. 1 AL CONTRATO DE PRESTACIÓN DE SERVICIOS No. CT-2026-011\n\nEntre MINERA LOS ANDES S.A.C., identificada con RUC 20512345678, con domicilio en Lima, Perú, representada por Jorge Quispe Huamán (EL CONTRATANTE), y PERIFERIA IT GROUP S.A.S., NIT 900.123.456-7, representada por Roberto Andrade S...",
+                "entidades": {
+                    "codigos_contrato_detectados": [
+                        "CT-2026-011"
+                    ]
+                }
+            }
+        },
+        "codigos_contrato_detectados": [
+            "CT-2026-011"
         ],
-        "estado_analisis": "Procesado correctamente"
+        "cruce_maestro": [
+            [
+                {
+                    "id_contrato": "CT-2026-011",
+                    "cliente": "Minera Los Andes S.A.C.",
+                    "nit_cliente": 20512345678,
+                    "pais": "PE",
+                    "objeto": "Célula ágil de desarrollo para sistema de operaciones",
+                    "valor": 350000,
+                    "moneda": "PEN",
+                    "fecha_inicio": "2026-05-02",
+                    "fecha_fin": "2027-05-01",
+                    "requiere_poliza": true,
+                    "tipo_poliza": "cumplimiento;responsabilidad_civil",
+                    "estado_poliza": "vigente",
+                    "comercial": "Carlos Ruiz Medina",
+                    "ruta_sharepoint": "Contratos/2026/minera-los-andes/CT-2026-011.pdf",
+                    "fecha_registro": "2026-05-05",
+                    "fuente": "buzon"
+                }
+            ]
+        ],
+        "estado_conciliacion": "Conciliado correctamente"
     },
     {
         "mensaje_id": "msg-004",
-        "remitente": "Desconocido",
+        "remitente": "lgomez@periferia-ficticia.com",
         "asunto": "RV: Contrato Clínica San Rafael - Mesa de servicio",
-        "documentos_adjuntos": [
-            "contrato.txt"
+        "documentos": {
+            "contrato.txt": {
+                "extracto": "CONTRATO DE PRESTACIÓN DE SERVICIOS No. CT-2026-012\n\nEntre los suscritos, CLÍNICA SAN RAFAEL S.A., identificada con NIT 890.903.456-1, con domicilio en Medellín, representada legalmente por Patricia Londoño Arango, quien en adelante se denominará EL CONTRATANTE, y PERIFERIA IT GROUP S.A.S., identifi...",
+                "entidades": {
+                    "montos_detectados": [
+                        "$210.000.000"
+                    ],
+                    "codigos_contrato_detectados": [
+                        "CT-2026-012"
+                    ]
+                }
+            }
+        },
+        "codigos_contrato_detectados": [
+            "CT-2026-012"
         ],
-        "estado_analisis": "Procesado correctamente"
+        "cruce_maestro": [
+            [
+                {
+                    "id_contrato": "CT-2026-012",
+                    "cliente": "Clínica San Rafael S.A.",
+                    "nit_cliente": 890903456,
+                    "pais": "CO",
+                    "objeto": "Mesa de servicio TI nivel 1 y 2",
+                    "valor": 210000000,
+                    "moneda": "COP",
+                    "fecha_inicio": "2026-05-15",
+                    "fecha_fin": "2026-11-14",
+                    "requiere_poliza": false,
+                    "tipo_poliza": NaN,
+                    "estado_poliza": "no_aplica",
+                    "comercial": "Laura Gómez Restrepo",
+                    "ruta_sharepoint": "Contratos/2026/clinica-san-rafael/CT-2026-012.pdf",
+                    "fecha_registro": "2026-05-18",
+                    "fuente": "buzon"
+                }
+            ]
+        ],
+        "estado_conciliacion": "Conciliado correctamente"
     },
     {
         "mensaje_id": "msg-005",
-        "remitente": "Desconocido",
+        "remitente": "amolina@periferia-ficticia.com",
         "asunto": "Cotización propuesta Universidad - ampliación fábrica",
-        "documentos_adjuntos": [
-            "cotizacion.txt"
-        ],
-        "estado_analisis": "Procesado correctamente"
+        "documentos": {
+            "cotizacion.txt": {
+                "extracto": "COTIZACIÓN No. COT-2026-088\nFecha: 27 de agosto de 2026\nCliente: Universidad del Valle del Río\nAtención: Oficina de Tecnología\n\nDescripción: Ampliación de la célula de fábrica de software en dos (2) desarrolladores senior por seis (6) meses.\nValor mensual: COP 32.000.000\nValor total estimado: COP 19...",
+                "entidades": {
+                    "montos_detectados": [
+                        "COP 32.000.000",
+                        "COP 192.000.000"
+                    ]
+                }
+            }
+        },
+        "codigos_contrato_detectados": [],
+        "cruce_maestro": "Sin coincidencia en maestro",
+        "estado_conciliacion": "Revisión manual requerida (Sin código formal detectado)"
     },
     {
         "mensaje_id": "msg-006",
-        "remitente": "Desconocido",
+        "remitente": "jperez@periferia-ficticia.com",
         "asunto": "Contrato marco Distribuidora Caribe",
-        "documentos_adjuntos": [
-            "contrato.txt"
+        "documentos": {
+            "contrato.txt": {
+                "extracto": "CONTRATO MARCO DE PRESTACIÓN DE SERVICIOS No. CM-2026-03\n\nEntre DISTRIBUIDORA CARIBE S.A.S., NIT 800.222.333-9, con domicilio en Barranquilla, representada legalmente por Ernesto Villalba Cano (EL CONTRATANTE), y PERIFERIA IT GROUP S.A.S., NIT 900.123.456-7, representada legalmente por Roberto Andra...",
+                "entidades": {
+                    "montos_detectados": [
+                        "$100.000.000"
+                    ],
+                    "codigos_contrato_detectados": [
+                        "CM-2026-03"
+                    ]
+                }
+            }
+        },
+        "codigos_contrato_detectados": [
+            "CM-2026-03"
         ],
-        "estado_analisis": "Procesado correctamente"
+        "cruce_maestro": "Sin coincidencia en maestro",
+        "estado_conciliacion": "Discrepancia: Código CM-2026-03 no registrado en el maestro"
     }
 ]
