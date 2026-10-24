@@ -1,1 +1,56 @@
-[]
+[
+    {
+        "mensaje_id": "msg-001",
+        "remitente": "Desconocido",
+        "asunto": "Contrato firmado - Industrias Delta - Implementación CRM",
+        "documentos_adjuntos": [
+            "contrato.txt"
+        ],
+        "estado_analisis": "Procesado correctamente"
+    },
+    {
+        "mensaje_id": "msg-002",
+        "remitente": "Desconocido",
+        "asunto": "Contrato Corporación Andina - Fábrica de software 2026-2027",
+        "documentos_adjuntos": [
+            "contrato.txt"
+        ],
+        "estado_analisis": "Procesado correctamente"
+    },
+    {
+        "mensaje_id": "msg-003",
+        "remitente": "Desconocido",
+        "asunto": "Otrosí No. 1 contrato CT-2026-011 Minera Los Andes",
+        "documentos_adjuntos": [
+            "otrosi.txt"
+        ],
+        "estado_analisis": "Procesado correctamente"
+    },
+    {
+        "mensaje_id": "msg-004",
+        "remitente": "Desconocido",
+        "asunto": "RV: Contrato Clínica San Rafael - Mesa de servicio",
+        "documentos_adjuntos": [
+            "contrato.txt"
+        ],
+        "estado_analisis": "Procesado correctamente"
+    },
+    {
+        "mensaje_id": "msg-005",
+        "remitente": "Desconocido",
+        "asunto": "Cotización propuesta Universidad - ampliación fábrica",
+        "documentos_adjuntos": [
+            "cotizacion.txt"
+        ],
+        "estado_analisis": "Procesado correctamente"
+    },
+    {
+        "mensaje_id": "msg-006",
+        "remitente": "Desconocido",
+        "asunto": "Contrato marco Distribuidora Caribe",
+        "documentos_adjuntos": [
+            "contrato.txt"
+        ],
+        "estado_analisis": "Procesado correctamente"
+    }
+]
