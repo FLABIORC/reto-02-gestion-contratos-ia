@@ -43,6 +43,7 @@ reto-02-gestion-contratos-ia/
 ├── SOLUCION.md              # Documento técnico detallado y Regla de Gobierno
 ├── tsconfig.json            # Configuración del compilador TypeScript
 └── package.json             # Dependencias y scripts de ejecución
+```
 
 ---
 
@@ -52,17 +53,24 @@ reto-02-gestion-contratos-ia/
    ```bash
    git clone [https://github.com/FLABIORC/reto-02-gestion-contratos-ia.git](https://github.com/FLABIORC/reto-02-gestion-contratos-ia.git)
    cd reto-02-gestion-contratos-ia
+   ```
 
 Abre tu terminal en la carpeta del proyecto y ejecuta:
-npm.cmd install
+   ```bash
+   npm.cmd install
+   ``` 
 
 2. Ejecutar la Demo Determinista (Sin LLM)
 Para validar la lógica de negocio completa de punta a punta procesando los mensajes de prueba (msg-001 a msg-006):
-npm.cmd run demo
+   ```bash
+   npm.cmd run demo
+   ```
 
 3. Iniciar el Servidor de Desarrollo y la Interfaz Web
 Para levantar el servidor backend y probar el chat interactivo en tiempo real:
-npm.cmd run dev
+   ```bash
+   npm.cmd run dev
+   ```
 
 Una vez iniciado, abre tu navegador web e ingresa a:
 
@@ -80,3 +88,20 @@ Sube los cambios al repositorio de GitHub.
 En el hPanel de Hostinger, configura una nueva aplicación Node.js (versión 20.x o superior).
 Configura las variables de entorno (PORT, OPENAI_API_KEY, OPENAI_MODEL).
 Establece el comando de inicio en npm start.
+
+---
+
+## 🛠️ Vulnerabildiades corregidas
+Se identificó una vulnerabildiades en Paquete **Zod @3.25.76** de gravedad ***Alto*** Vulnerabilidad **CVE-2023-54404** Publicado 2026-10-01. Descripción: 
+
+   > ### npm: Zod can exhaust memory while validating oversized constrained collections
+   >
+   > Zod schema-validation library through 4.6.5 contains an uncontrolled resource consumption vulnerability that allows attackers to exhaust memory by submitting a large array to an application using an array schema without a length constraint. Attackers can exploit the handleArrayResult parse logic in $ZodArray, which accumulates every validation issue for each failing element with no cap or early termination, causing the process to allocate excessive issue objects and crash due to out-of-memory conditions.
+   >
+   >- 7.5\ Alto
+   >- CWE-770
+   >- < 4.6.6\
+   >
+   >Actualice zod a 4.6.6 o posterior para resolver esta vulnerabilidad.
+
+ 

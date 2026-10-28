@@ -1,0 +1,5 @@
+## ignorar logs
+logs
+*.logs
+out
+outputs

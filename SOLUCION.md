@@ -13,29 +13,8 @@ El sistema implementa un agente conversacional inteligente y determinista diseñ
 ---
 
 ## 2. Arquitectura de la Solución
-+-----------------------------------------------------------------------+
-|                            INTERFAZ WEB / CLIENTE                     |
-+-----------------------------------------------------------------------+
-|
-v
-+-----------------------------------------------------------------------+
-|                         SERVIDOR BACKEND (Express)                    |
-|                            src/server.ts                              |
-+-----------------------------------------------------------------------+
-|                                                   |
-v                                                   v
-+-----------------------+                         +---------------------+
-|  ADAPTADOR LLM        |                         |  HERRAMIENTAS ZOD   |
-|  src/llm/adapter.ts   |                         |  src/tools/         |
-|  (GPT-4o / Agnóstico) |                         |  contratos.ts       |
-+-----------------------+                         +---------------------+
-|
-v
-+---------------------+
-|   DATOS Y OUTPUTS   |
-|   data/fixtures/    |
-|   out/sharepoint/   |
-+---------------------+
+
+![arquitectura-solucion](web/arquitectura-solucion.png)
 
 ---
 
