@@ -3,7 +3,7 @@
 **Empresa:** Periferia IT Group  
 **Desarrollador / Arquitecto:** Flabio Rodríguez Correa  
 **Fecha:** Octubre 2026  
-**Stack Tecnológico:** Node.js v24, TypeScript 5.3, Zod 3.22, Express, OpenAiAdapter  
+**Stack Tecnológico:** Node.js v24, TypeScript 5.3, Zod 4.6.7, Express, OpenAiAdapter  
 
 ---
 
@@ -36,15 +36,16 @@ El script `demo.ts` permite validar la lógica de negocio completa de punta a pu
 
 **Comando de ejecución:**
 ```powershell
-npm.cmd run demo
+   npm.cmd run demo
+```
 
 ## 5. Estimación de Costos del Modelo LLM
 Para un volumen estimado de 1,000 contratos mensuales procesados mediante el modelo gpt-4o:
-Prompt Tokens por Contrato: ~2,500 tokens (System prompt + herramientas + extractos de texto).
-Completion Tokens por Contrato: ~500 tokens (Estructura JSON de respuesta + llamada a herramienta).
-Costo por 1k Entrada (GPT-4o): $0.0025 USD
-Costo por 1k Salida (GPT-4o): $0.0100 USD
-Costo mensual estimado = $11.25 USD/mes
+   Prompt Tokens por Contrato: ~2,500 tokens (System prompt + herramientas + extractos de texto).
+   Completion Tokens por Contrato: ~500 tokens (Estructura JSON de respuesta + llamada a herramienta).
+   * Costo por 1k Entrada (GPT-4o): $0.0025 USD
+   * Costo por 1k Salida (GPT-4o): $0.0100 USD
+   * Costo mensual estimado = $11.25 USD/mes
 
 ## 6. Regla de Gobierno y Seguridad Corporativa
 REGLA DE GOBIERNO:
