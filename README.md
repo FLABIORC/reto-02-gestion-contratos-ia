@@ -14,10 +14,11 @@ Este proyecto implementa un asistente conversacional inteligente basado en agent
 ## 🛠️ Stack Tecnológico
 * **Lenguaje:** TypeScript 5.3 (módulos tipo `bundler`)
 * **Runtime:** Node.js v24+
-* **Validación de Esquemas:** Zod 3.22
+* **Validación de Esquemas:** Zod 4.6.7
 * **Backend:** Express.js
 * **Interfaz Gráfica:** HTML5 + Tailwind CSS (vía CDN)
 * **Infraestructura de Despliegue:** Hostinger Business (Node.js App)
+* **Modelo de LLM:** OpenIA (gpt4.0)
 
 ---
 
@@ -55,7 +56,7 @@ reto-02-gestion-contratos-ia/
    cd reto-02-gestion-contratos-ia
    ```
 
-Abre tu terminal en la carpeta del proyecto y ejecuta:
+   Abre tu terminal en la carpeta del proyecto y ejecuta:
    ```bash
    npm.cmd install
    ``` 
@@ -72,22 +73,23 @@ Para levantar el servidor backend y probar el chat interactivo en tiempo real:
    npm.cmd run dev
    ```
 
-Una vez iniciado, abre tu navegador web e ingresa a:
-
-👉 http://localhost:3000
+   Una vez iniciado, abre tu navegador web e ingresa a:
+   
+   👉 http://localhost:3000
 
 🔍 Herramientas del Agente (Zod)
-contratos_leer_buzon: Analiza el buzón e identifica correos pendientes y adjuntos.
-contratos_extraer: Extrae campos estructurados y puntaje de confianza.
-contratos_validar: Clasifica el contrato frente al maestro corporativo.
-contratos_registrar: Almacena el documento en la ruta simulada de SharePoint (out/sharepoint/).
-contratos_alertas: Consolida reportes de vencimientos en out/alertas.md.
+   
+   >   - contratos_leer_buzon: Analiza el buzón e identifica correos pendientes y adjuntos.
+   >   - contratos_extraer: Extrae campos estructurados y puntaje de confianza.
+   >   - contratos_validar: Clasifica el contrato frente al maestro corporativo.
+   >   - contratos_registrar: Almacena el documento en la ruta simulada de SharePoint (out/sharepoint/).
+   >   - contratos_alertas: Consolida reportes de vencimientos en out/alertas.md.
 
 📦 Despliegue en Hostinger Business
-Sube los cambios al repositorio de GitHub.
-En el hPanel de Hostinger, configura una nueva aplicación Node.js (versión 20.x o superior).
-Configura las variables de entorno (PORT, OPENAI_API_KEY, OPENAI_MODEL).
-Establece el comando de inicio en npm start.
+   Sube los cambios al repositorio de GitHub.
+   En el hPanel de Hostinger, configura una nueva aplicación Node.js (versión 20.x o superior).
+   Configura las variables de entorno (PORT, OPENAI_API_KEY, OPENAI_MODEL).
+   Establece el comando de inicio en npm start.
 
 ---
 

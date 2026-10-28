@@ -1,5 +1,8 @@
 ## ignorar logs
-logs
+logs/
 *.logs
-out
-outputs
+out/
+outputs/
+node_modules/
+dist/
+.env
